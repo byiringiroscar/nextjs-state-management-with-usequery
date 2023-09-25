@@ -14,6 +14,9 @@ interface Pokemon {
 export default function Home({ initialPokemon }: { initialPokemon: Pokemon[] }) {
   const { data:pokemon } = useQuery("pokemon", getPokemon, {
     initialData: initialPokemon,
+    // this will prevent of displaying index.json in network 
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
   });
   const [filter, setFilter] = useState("")
   const filteredPokemon = useMemo(
